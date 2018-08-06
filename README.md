@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/Nijinsha/leap.svg)](https://github.com/Nijinsha/leap/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/Nijinsha/leap.svg)](https://github.com/Nijinsha/leap/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Nijinsha/leap.svg)](https://github.com/Nijinsha/leap/blob/master/LICENSE)
 # Leap Blockchain
 > A proof-of-work, blockchain written in python
 
