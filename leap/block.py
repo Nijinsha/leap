@@ -4,7 +4,7 @@ import json
 
 
 class Block(object):
-    """Defines a single block in the blockchain.
+    """Blueprint of a single block in the blockchain.
 
     """
     def __init__(self, index, previous_block_hash, transactions):
