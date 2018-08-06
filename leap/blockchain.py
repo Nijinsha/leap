@@ -1,0 +1,2 @@
+class Blockchain(object):
+    pass
