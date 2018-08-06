@@ -38,5 +38,8 @@ class Block(object):
         """Method the hash the block.
         This method takes in the block and coverts it into an hashable form and returns the hash.
         """
-        block_string = None
-        pass
+        # TODO : Refactor the algorithm and improve it. This method only does basic things
+        block_string = self.__str__()
+        block_hash = hashlib.sha3_256(block_string).digest()
+        # The above lines converts the object into __str__() representation and hashes it using sha3_256 algorithm.
+        return block_hash
