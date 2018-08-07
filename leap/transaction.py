@@ -1,4 +1,5 @@
 import time
+import collections
 
 
 class Transaction(object):
@@ -6,19 +7,31 @@ class Transaction(object):
     A transaction is a single spent which has a sender, a receiver and a amount.
     """
 
-    def __init__(self, sender, receiver, input_unspent_transactions, output_transactions):
+    def __init__(self, sender, receiver, amount, input_unspent_transactions=None, output_transactions=None):
         """Constructor to create a transaction object.
         :param sender : Address of the sender.
         :param receiver : Address of the receiver.
         :param input_unspent_transactions : <List{unspent transactions}> A list of unspent transactions which is greater
-         than the transaction amount.
+         than the transaction amount. # TODO: The authenticity and validity of this should be verified by the miner when
+                                      # TODO:  he receive this transaction.
         :param output_transactions: <List{transactions} A list of output transactions.
         """
         self.sender = sender
         self.receiver = receiver
-        self.input_unspent_transactions = input_unspent_transactions
-        self.output_transactions = output_transactions
+        self.amount = amount
+        # self.input_unspent_transactions = input_unspent_transactions
+        # self.output_transactions = output_transactions
         self.timestamp = time.time()
+
+    @property
+    def to_ordered_dict(self):
+        """Property method to convert the object to a ordered dictionary.
+        :return: <Dict{object}> Returns and ordered dictionary of object member variables.
+        """
+        return collections.OrderedDict(self.__dict__)
+
+    def sign_transaction(self):
+        pass
 
     @staticmethod
     def calculate_input_unspent_transactions(amount):
@@ -39,3 +52,4 @@ class Transaction(object):
         :return: <List{output transactions}> A list transactions which can be later used by the receiver as
         input for his transaction
         """
+
