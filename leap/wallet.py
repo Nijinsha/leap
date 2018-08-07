@@ -14,7 +14,7 @@ def generate__key_pair():
         success = save_key_pair(private_key, public_key)
     except RuntimeError:
         print("Could not create key/pair or save them to file.")
-        success=False
+        success = False
     return success
 
 
@@ -34,8 +34,8 @@ def get_public_key():
 
 def save_key_pair(private_key, public_key):
     """Function to save the public and private key created for the wallet to disk.
-    :param private_key: The generated private key
-    :param public_key: The public key obtained from private key
+    :param private_key: The generated private key.
+    :param public_key: The public key obtained from private key.
     :return: <Boolean> True if the save was a success.
     """
     success = True
