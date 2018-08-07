@@ -7,19 +7,22 @@ def create_leap():
     This is the main entry point of the application
     """
     blockchain = Blockchain()
-    if check_for_genesis_block():
+    if check_for_genesis_block(blockchain):
         pass
     else:
         genesis_block = create_genesis_block()
         blockchain.add_block_to_chain(genesis_block)
+        genesis_block_hash = genesis_block.hash_block
+        setattr(blockchain, "current_block_hash", genesis_block_hash)  # Builtin method to set an attribute value.
 
 
-def check_for_genesis_block():
+def check_for_genesis_block(blockchain):
     """Check if a chain has the genesis block.
+    :param blockchain: the blockchain object
     :return: <Boolean> True if the genesis block is found.
     """
     success = True
-    if not Blockchain.chain:
+    if not blockchain.chain:
         print("Blockchain is empty")
         success = False
     return success

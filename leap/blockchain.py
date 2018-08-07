@@ -1,6 +1,7 @@
 class Blockchain(object):
     """Blueprint of the blockchain object.
     """
+
     def __init__(self):
         """Constructor to create a blockchain object.
         """
