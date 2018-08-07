@@ -29,3 +29,7 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+
+# Custom #
+##########
+data
