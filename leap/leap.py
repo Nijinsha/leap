@@ -30,10 +30,3 @@ def create_genesis_block():
     :return: <Block>
     """
     return Block(index=0, previous_block_hash=0, transactions=None)
-
-
-def append_block_to_blockchain(blockchain, block):
-    """Function to append the created block to blockchain.
-    """
-    blockchain.chain.append(block)
-    return
