@@ -11,7 +11,7 @@ def create_leap():
         pass
     else:
         genesis_block = create_genesis_block()
-        append_block_to_blockchain(blockchain,genesis_block)
+        blockchain.add_block_to_chain(genesis_block)
 
 
 def check_for_genesis_block():
