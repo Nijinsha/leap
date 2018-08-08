@@ -14,6 +14,7 @@ def create_leap():
         blockchain.add_block_to_chain(genesis_block)
         genesis_block_hash = genesis_block.hash_block
         setattr(blockchain, "current_block_hash", genesis_block_hash)  # Builtin method to set an attribute value.
+    return
 
 
 def check_for_genesis_block(blockchain):
