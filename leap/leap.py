@@ -52,3 +52,9 @@ def create_transaction(sender_address, receiver_address, amount):
     transaction.calculate_input_unspent_transactions()
     transaction.calculate_output_transactions(current_miner_fee=get_current_miner_fee())
     return transaction
+
+
+def start_mining():
+    """Function to start the mining process
+    """
+    pass

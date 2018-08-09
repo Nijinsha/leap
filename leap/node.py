@@ -1,5 +1,5 @@
 from flask import Flask, request
-from leap import leap
+from leap import leap, helpers
 import json
 
 app = Flask(__name__)
@@ -24,12 +24,27 @@ def create_transaction():
     :return: <json> success. True if the transaction request was successful.
     """
     response = None
-    if request.remote_addr == '127.0.0.1':  # Do not allow anyone other than gui wallet of user to request the endpoint
+    if helpers.is_request_from_secure_wallet(
+            request):  # Do not allow anyone other than gui wallet of user to request the endpoint
         # or else anyone can initiate a transaction other than user.
         leap.create_transaction(request.data['sender'], request.data['receiver'], request.data['amount'])
         response = "success"
     else:
         response = "Failed! You don't have the right to do that."
+    return response
+
+
+@app.route('/mine/start')
+def mine():
+    """Route to start mining.
+    :return: <Response>
+    """
+    response = None
+    if helpers.is_request_from_secure_wallet(request):
+        leap.start_mining()
+        response = "Mining has started!"
+    else:
+        response = "Something went wrong/Not allowed!"
     return response
 
 
