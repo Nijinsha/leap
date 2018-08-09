@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from leap import leap
 import json
 
@@ -23,8 +23,14 @@ def create_transaction():
     transaction to all the nodes.
     :return: <json> success. True if the transaction request was successful.
     """
-    request_data = request.getjson()
-    return json.dumps(request_data)
+    response = None
+    if request.remote_addr == '127.0.0.1':  # Do not allow anyone other than gui wallet of user to request the endpoint
+        # or else anyone can initiate a transaction other than user.
+        leap.create_transaction(request.data['sender'], request.data['receiver'], request.data['amount'])
+        response = "success"
+    else:
+        response = "Failed! You don't have the right to do that."
+    return response
 
 
 if __name__ == '__main__':
