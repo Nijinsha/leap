@@ -1,5 +1,6 @@
 from leap.blockchain import Blockchain
 from leap.block import Block
+from leap.transaction import Transaction
 
 
 def create_leap():
@@ -34,3 +35,20 @@ def create_genesis_block():
     :return: <Block>
     """
     return Block(index=0, previous_block_hash=0, transactions=None)
+
+
+# TODO: May be this function should be a method of blockchain class
+def get_current_miner_fee():
+    """Function to get the current miner fee.
+    :return: <Int> Current miner fee.
+    """
+    pass
+
+
+def create_transaction(sender_address, receiver_address, amount):
+    """Function to create a transaction according to user request.
+    """
+    transaction = Transaction(sender=sender_address, receiver=receiver_address, amount=amount)
+    transaction.calculate_input_unspent_transactions()
+    transaction.calculate_output_transactions(current_miner_fee=get_current_miner_fee())
+    return transaction
