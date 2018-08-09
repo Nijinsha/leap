@@ -19,8 +19,8 @@ class Transaction(object):
         self.sender = sender
         self.receiver = receiver
         self.amount = amount
-        # self.input_unspent_transactions = input_unspent_transactions
-        # self.output_transactions = output_transactions
+        self.input_unspent_transactions = input_unspent_transactions
+        self.output_transactions = output_transactions
         self.timestamp = time.time()
 
     @property
@@ -33,23 +33,16 @@ class Transaction(object):
     def sign_transaction(self):
         pass
 
-    @staticmethod
-    def calculate_input_unspent_transactions(amount):
+    def calculate_input_unspent_transactions(self):
         """This method create a list of unspent transactions that is greater than the amount transacted.
-        :param amount: <int> The amount need to be transacted to a receiver.
         :return: <List{unspent transactions}> A list of unspent transactions.
         """
         pass
 
-    @staticmethod
-    def calculate_output_transactions(input_unspent_transactions,amount,current_miner_fee):
-        """
-
-        :param input_unspent_transactions: <List{unspent transactions}> A list of unspent transactions which is greater
-        than the transaction amount.
-        :param amount:<int> The amount need to be transacted to a receiver.
+    def calculate_output_transactions(self, current_miner_fee):
+        """Method to create a list of outputs of a transaction.
         :param current_miner_fee: The current miner fee which is obtained from the user or from the last block.
         :return: <List{output transactions}> A list transactions which can be later used by the receiver as
-        input for his transaction
+        input for his transaction.
         """
-
+        pass
