@@ -1,12 +1,14 @@
 from leap.blockchain import Blockchain
 from leap.block import Block
 from leap.transaction import Transaction
+import leap.miner
 
 
 def create_leap():
     """Method to create the leap blockchain.
     This is the main entry point of the application
     """
+    global blockchain
     blockchain = Blockchain()
     if check_for_genesis_block(blockchain):
         pass
@@ -55,6 +57,6 @@ def create_transaction(sender_address, receiver_address, amount):
 
 
 def start_mining():
-    """Function to start the mining process
+    """Function to call the miner.
     """
-    pass
+    leap.miner.run_mining(blockchain)
