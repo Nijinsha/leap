@@ -43,6 +43,6 @@ class Block(object):
         """
         # TODO : Refactor the algorithm and improve it. This method only does basic things
         block_string = pickle.dumps(self)
-        block_hash = hashlib.sha3_256(block_string).digest()
+        block_hash = hashlib.sha3_256(block_string).hexdigest()
         # The above lines converts the object into __str__() representation and hashes it using sha3_256 algorithm.
         return block_hash

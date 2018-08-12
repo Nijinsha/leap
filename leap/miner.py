@@ -28,4 +28,14 @@ def get_verified_transactions():
 def calculate_block_difficulty(block_hash):
     """Function to calculate block difficulty.
     """
-    return 0
+    hash_binary = convert_hash_to_binary(block_hash)
+    leading_zeros_count = hash_binary.index('1')
+    return leading_zeros_count
+
+
+def convert_hash_to_binary(hash_string):
+    """Function to convert hash to binary.
+    :return: Binary representation of hash string
+    """
+    hash_binary = ''.join(format(ord(x), 'b') for x in hash_string)
+    return hash_binary
